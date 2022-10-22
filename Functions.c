@@ -9,7 +9,7 @@ void playGame(void)
 {
     int randomNum;
     time_t t;
-    char choice[MAXLEN+1];
+    char choice[MAXLEN+1] = "";
     srand((unsigned) time(&t));
 
     //randomize correct number based on max number    
@@ -61,7 +61,6 @@ void playGame(void)
                 printf("That value is not correct, please try again...\n");
             }
         }
-        //if union == 'q'
         //quit game    
         else
         {
@@ -69,6 +68,7 @@ void playGame(void)
         }
     }
 }
+
 //changeMaxNum - user changes max number the game uses
 void changeMaxNum(void)
 {
@@ -79,11 +79,11 @@ void changeMaxNum(void)
         scanf("%s", temp);
         if (isdigit((int)*temp) != 1)
         {
-            printf("Not a number, please try again...\n\n");
+            printf("Not a number, please try again...\n");
         }
         else if(atoi(temp) < 1 || atoi(temp) > 100)
         {
-            printf("Invalid value, please try again...\n\n");
+            printf("Invalid value, please try again...\n");
         }
     }
 
@@ -93,5 +93,5 @@ void changeMaxNum(void)
 //exitProgram - user ends program
 void exitProgram(void)
 {
-    printf("Quitting program...\n\n");
+    printf("Quitting program...\n");
 }
