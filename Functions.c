@@ -24,7 +24,7 @@ void playGame(void)
             scanf("%s", choice);
             if(tolower((int)*choice) != 'q' && isdigit((int)*choice) != 1)
             {
-                printf("Invalid input, please try again\n\n");
+                printf("Invalid input, please try again\n");
             }
             else
             {
@@ -77,7 +77,7 @@ void changeMaxNum(void)
     {
         printf("Enter a new Max Number between 1 and 100: ");
         scanf("%s", temp);
-        
+
         if (isdigit((int)*temp) != 1)
         {
             printf("Not a number, please try again...\n");
