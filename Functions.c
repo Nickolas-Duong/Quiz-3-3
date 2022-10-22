@@ -22,21 +22,21 @@ void playGame(void)
     //randomize correct number based on max number    
     randomNum = (rand() % max) + 1;
     //Loop within game while not 'q'
-    while(tolower(choice.str) != 'q')
+    while(tolower((int)*choice.str) != 'q')
     {
         //union = get choice    
-        while(tolower(choice.str) != 'q' && isdigit(choice.str) != 1)
+        while(tolower((int)*choice.str) != 'q' && isdigit((int)*choice.str) != 1)
         {
             printf("Guess a random number between 1 and %d (press q to quit): ", max);
             scanf("%s", choice.str);
-            if(tolower(choice.str) != 'q' && isdigit(choice.str) != 1)
+            if(tolower((int)*choice.str) != 'q' && isdigit((int)*choice.str) != 1)
             {
                 printf("Invalid input, please try again\n\n");
             }
         }
 
         //if choice != 'q'
-        if(tolower(choice.str) != 'q')
+        if(tolower((int)*choice.str) != 'q')
         {
             //convert to int
             int temp = atoi(choice.str);
@@ -56,7 +56,7 @@ void playGame(void)
             else if(choice.i == randomNum)
             {
                 printf("You guessed the correct number! \n");
-                strcpy(choice.str, 'q');
+                strcpy(*choice.str, 'q');
             }
             //if choice is not accepted
             else
@@ -76,11 +76,11 @@ void playGame(void)
 void changeMaxNum(void)
 {
     char temp[MAXLEN+1] = "";
-    while(isdigit(temp) != 1)
+    while(isdigit((int)*temp) != 1)
     {
         printf("Enter a new Max Number between 1 and 100: ");
         scanf("%s", temp);
-        if (isdigit(temp) != 1)
+        if (isdigit((int)*temp) != 1)
         {
             printf("Not a number, please try again...\n\n");
         }
