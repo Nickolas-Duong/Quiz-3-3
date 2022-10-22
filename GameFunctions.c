@@ -2,24 +2,6 @@
 #include "Game.h"
 #define MAXLEN 80
 
-//showUserMenu - print the user the menu to decide to play the game
-void showUserMenuProcess(int numChoices, const char *const menu[], void (*fPtrs[])(void))
-{
-    //print user menu
-    int choice;
-    while((choice = getChoice(numChoices, menu)) != 0)
-    {
-        //get function ptr | calls function
-        fPtrs[choice-1]();
-
-        if(choice == 3)
-        {
-            choice = 0;
-        }
-    }
-
-}
-
 //get char from input
 int getline(char *buf, int bufLen)
 {
@@ -35,6 +17,17 @@ int getline(char *buf, int bufLen)
     buf[i] = '\0';
     return (c==EOF) ? -1 : i;
 }
+
+static void showUserMenu(int n, const char *const items[]) 
+{ 
+    printf("Your choices are:\n"); 
+    for (int i = 1; i <= n; i++) 
+
+        printf("\t%i) %s\n", i, items[i-1]); 
+
+    printf("Or type 0 to quit: "); 
+
+} 
 
 //getChoice - get a choice from the user - type cast return type
 static int getChoice(int n, const char *const items[])
@@ -57,4 +50,22 @@ static int getChoice(int n, const char *const items[])
     }
 
     return EXIT_SUCCESS;
+}
+
+//showUserMenu - print the user the menu to decide to play the game
+void showUserMenuProcess(int numChoices, const char *const menu[], void (*fPtrs[])(void))
+{
+    //print user menu
+    int choice;
+    while((choice = getChoice(numChoices, menu)) != 0)
+    {
+        //get function ptr | calls function
+        fPtrs[choice-1]();
+
+        if(choice == 3)
+        {
+            choice = 0;
+        }
+    }
+
 }
