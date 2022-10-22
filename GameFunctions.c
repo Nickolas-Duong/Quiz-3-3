@@ -1,29 +1,55 @@
 //Contains code for all functions used by the game
+#include "Game.h"
+#define MAXLEN 80
 
 //showUserMenu - print the user the menu to decide to play the game
+void showUserMenuProcess(int numChoices, const char *const menu[], void (*fPtrs[])(void))
+{
     //print user menu
-        //press 1 to play
-        //press 2 to change max num
-        //press 3 to quit
+    int choice;
+    while((choice = getChoice(numChoices, menu)) != 0)
+    {
+        //get function ptr | calls function
+        fPtrs[choice-1]();
+    }
+
+}
+
+//get char from input
+int getline(char *buf, int bufLen)
+{
+    int c;
+    int i = 0;
+    while((c = getchar()) != '\n' && c != EOF)
+    {
+        if(i < bufLen)
+        {
+            buf[i++] = c;
+        }
+    }
+    buf[i] = '\0';
+    return (c==EOF) ? -1 : i;
+}
 
 //getChoice - get a choice from the user - type cast return type
+static int getChoice(int n, const char *const items[])
+{
     //get choice from user
-    //return choice
+    int choice;
+    char line[MAXLEN+1];
+    showUserMenu(n, items);
+    while(getline(line, MAXLEN) != -1)
+    {
+        //return choice
+        if(sscanf(line, "%i", &choice) == 1 && 1 <= choice && choice <= n)
+        {
+            return choice;
+        }
+        else
+        {
+            printf("Enter a value between 1 and %i: ", n);
+        }
+    }
 
-//playGame - user plays the game; game returns a value to prompt quit or win
-    //Loop within game
-    //randomize correct number based on max number
-    //union = get choice
-    //if union == q
-        //quit game (return 0)
-
-    //else
-        //if union > randNum
-            //print guess is too high
-        //elif union < randNum
-            //print guess is too low
-        //else
-            //print you guessed correctly!
-            //return 1
-
-//changeMaxNum - user changes max number the game uses
+    return EXIT_SUCCESS;
+}
