@@ -25,7 +25,7 @@ static void showUserMenu(int n, const char *const items[])
 
         printf("\t%i) %s\n", i, items[i-1]); 
 
-    printf("Or type 0 to quit: "); 
+    printf("Enter choice: "); 
 
 } 
 
@@ -38,6 +38,7 @@ static int getChoice(int n, const char *const items[])
     showUserMenu(n, items);
     while(getline(line, MAXLEN) != -1)
     {
+        fflush(stdout);
         //return choice
         if(sscanf(line, "%i", &choice) == 1 && 1 <= choice && choice <= n)
         {
@@ -64,7 +65,7 @@ void showUserMenuProcess(int numChoices, const char *const menu[], void (*fPtrs[
 
         if(choice == 3)
         {
-            choice = 0;
+            break;
         }
     }
 
