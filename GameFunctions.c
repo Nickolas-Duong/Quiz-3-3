@@ -22,10 +22,8 @@ static void showUserMenu(int n, const char *const items[])
 { 
     printf("Your choices are:\n"); 
     for (int i = 1; i <= n; i++) 
-
         printf("\t%i) %s\n", i, items[i-1]); 
 
-    printf("Enter choice: "); 
 
 } 
 
