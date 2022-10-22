@@ -7,5 +7,7 @@
 #include <stdlib.h>
 
 //function prototypes
-
+extern void playGame(int);
+extern int changeMax(int);
+extern void exitProgram(void);
 #endif
