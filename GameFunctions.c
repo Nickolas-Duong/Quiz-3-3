@@ -11,6 +11,11 @@ void showUserMenuProcess(int numChoices, const char *const menu[], void (*fPtrs[
     {
         //get function ptr | calls function
         fPtrs[choice-1]();
+
+        if(choice == 3)
+        {
+            choice = 0;
+        }
     }
 
 }
