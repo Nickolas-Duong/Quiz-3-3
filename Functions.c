@@ -19,7 +19,7 @@ void playGame(void)
     if(fp != NULL)
     {
         fp = fopen("maxNum.txt", "r");
-        fscanf(fp, "%d,", &max);
+        fscanf(fp, "%d", &max);
         fclose(fp);
     }
 
@@ -100,10 +100,10 @@ void changeMaxNum(void)
         }
     }
 
-    max = atoi(temp);
-
     fp = fopen("maxNum.txt", "w+");
     fprintf(fp, temp);
+    fprintf(fp, "\n");
+
     fclose(fp);
 }
 
