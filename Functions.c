@@ -6,7 +6,7 @@
 #define MAXLEN 10
 
 //playGame - user plays the game; game returns a value to prompt quit or win
-void playGame(int max)
+void playGame(void)
 {
     union Data
     {
@@ -73,5 +73,22 @@ void playGame(int max)
     }
 }
 //changeMaxNum - user changes max number the game uses
-
+void changeMaxNum(void)
+{
+    char temp[MAXLEN+1] = "";
+    while(isdigit(temp) != 1)
+    {
+        printf("Enter a new Max Number between 1 and 100: ");
+        scanf("%s", temp);
+        if (isdigit(temp) != 1)
+        {
+            printf("Not a number, please try again...\n\n");
+        }
+        else if(atoi(temp) < 1 || atoi(temp) > 100)
+        {
+            printf("Invalid value, please try again...\n\n");
+        }
+        *temp = "";
+    }
+}
 //exitProgram - user ends program
