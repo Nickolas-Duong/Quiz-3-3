@@ -3,6 +3,8 @@
 #include <time.h>
 #include <ctype.h>
 #define MAXLEN 10
+//max number
+static int max = 10;
 
 //playGame - user plays the game; game returns a value to prompt quit or win
 void playGame(void)
@@ -11,6 +13,15 @@ void playGame(void)
     time_t t;
     char choice[MAXLEN+1] = "";
     srand((unsigned) time(&t));
+    
+    FILE *fp;
+    max = 10;
+    if(fp != NULL)
+    {
+        fp = fopen("maxNum.txt", "r");
+        fscanf(fp, "%d,", &max);
+        fclose(fp);
+    }
 
     //randomize correct number based on max number    
     randomNum = (rand() % max) + 1;

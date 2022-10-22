@@ -34,9 +34,9 @@ static int getChoice(int n, const char *const items[])
     int choice;
     char line[MAXLEN+1];
     showUserMenu(n, items);
+    printf("Enter a value between 1 and %i: ", n);
     while(getline(line, MAXLEN) != -1)
     {
-        fflush(stdout);
         //return choice
         if(sscanf(line, "%i", &choice) == 1 && 1 <= choice && choice <= n)
         {
@@ -56,6 +56,7 @@ void showUserMenuProcess(int numChoices, const char *const menu[], void (*fPtrs[
 {
     //print user menu
     int choice;
+
     while((choice = getChoice(numChoices, menu)) != 0)
     {
         //get function ptr | calls function
