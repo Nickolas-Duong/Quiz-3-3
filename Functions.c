@@ -25,8 +25,15 @@ void playGame(int max)
     while(tolower(choice.str) != 'q')
     {
         //union = get choice    
-        printf("Guess a random number between 1 and %d (press q to quit): ", max);
-        scanf("%s", choice.str);
+        while(tolower(choice.str) != 'q' && isdigit(choice.str) != 1)
+        {
+            printf("Guess a random number between 1 and %d (press q to quit): ", max);
+            scanf("%s", choice.str);
+            if(tolower(choice.str) != 'q' && isdigit(choice.str) != 1)
+            {
+                printf("Invalid input, please try again\n\n");
+            }
+        }
 
         //if choice != 'q'
         if(tolower(choice.str) != 'q')
