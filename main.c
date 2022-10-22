@@ -5,7 +5,7 @@
 const char* const menuItems[] = {"Start Number Guessing Game", "Change Max Number Value", "Quit Game"};
 
 //array of pointers for functions
-void (*menuFuncPtrs[])(void) = {playGame, changeMax, exitProgram};
+void (*menuFuncPtrs[])(void) = {playGame, changeMaxNum, exitProgram};
 
 //int main
 int main()

@@ -11,7 +11,7 @@
 static int max = 10;
 
 //function prototypes
-extern void playGame(int);
-extern int changeMax(int);
+extern void playGame(void);
+extern void changeMaxNum(void);
 extern void exitProgram(void);
 #endif
