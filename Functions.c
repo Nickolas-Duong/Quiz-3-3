@@ -73,6 +73,7 @@ void playGame(void)
 void changeMaxNum(void)
 {
     char temp[MAXLEN+1] = "";
+    FILE *fp;
     while(isdigit((int)*temp) != 1 || atoi(temp) < 1 || atoi(temp) > 100)
     {
         printf("Enter a new Max Number between 1 and 100: ");
@@ -89,6 +90,10 @@ void changeMaxNum(void)
     }
 
     max = atoi(temp);
+
+    fp = fopen("maxNum.txt", "w+");
+    fprintf(fp, temp);
+    fclose(fp);
 }
 
 //exitProgram - user ends program
