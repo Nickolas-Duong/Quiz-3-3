@@ -4,6 +4,9 @@
 #include <ctype.h>
 #define MAXLEN 10
 
+//max number
+static int max = 10;
+
 //playGame - user plays the game; game returns a value to prompt quit or win
 void playGame(void)
 {

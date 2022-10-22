@@ -23,6 +23,7 @@ static void showUserMenu(int n, const char *const items[])
     printf("Your choices are:\n"); 
     for (int i = 1; i <= n; i++) 
         printf("\t%i) %s\n", i, items[i-1]); 
+    printf("Enter a value between 1 and %i: ", n);
 
 
 } 
@@ -41,10 +42,6 @@ static int getChoice(int n, const char *const items[])
         if(sscanf(line, "%i", &choice) == 1 && 1 <= choice && choice <= n)
         {
             return choice;
-        }
-        else
-        {
-            printf("Enter a value between 1 and %i: ", n);
         }
     }
 

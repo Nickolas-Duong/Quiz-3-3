@@ -7,9 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//max number
-static int max = 10;
-
 //function prototypes
 extern void playGame(void);
 extern void changeMaxNum(void);
