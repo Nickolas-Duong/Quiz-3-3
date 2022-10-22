@@ -1,19 +1,70 @@
 //Functions used by program
+#include "Game.h"
+#include <time.h>
+#include <ctype.h>
+
+#define MAXLEN 10
 
 //playGame - user plays the game; game returns a value to prompt quit or win
-    //Loop within game
-    //randomize correct number based on max number
-    //union = get choice
-    //if union == q
-        //quit game (return 0)
+void playGame(int max)
+{
+    union Data
+    {
+        int i;
+        char str[MAXLEN+1];
+    };
+    
+    union Data choice;
+    int randomNum;
+    time_t t;
+    srand((unsigned) time(&t));
 
-    //else
-        //if union > randNum
-            //print guess is too high
-        //elif union < randNum
-            //print guess is too low
-        //else
-            //print you guessed correctly!
-            //return 1
+    //randomize correct number based on max number    
+    randomNum = (rand() % max) + 1;
+    //Loop within game while not 'q'
+    while(tolower(choice.str) != 'q')
+    {
+        //union = get choice    
+        printf("Guess a random number between 1 and %d (press q to quit): ", max);
+        scanf("%s", choice.str);
 
+        //if choice != 'q'
+        if(tolower(choice.str) != 'q')
+        {
+            //convert to int
+            int temp = atoi(choice.str);
+            choice.i = temp;
+
+            //if choice is lower
+            if(choice.i < randomNum && choice.i > 0)
+            {
+                printf("Your number is lower than the target number. \n");
+            }
+            //if choice is higher
+            else if(choice.i > randomNum && choice.i <= max)
+            {
+                printf("You number is higher than the target number. \n");
+            }
+            //if choice is correct
+            else if(choice.i == randomNum)
+            {
+                printf("You guessed the correct number! \n");
+                strcpy(choice.str, 'q');
+            }
+            //if choice is not accepted
+            else
+            {
+                printf("That value is not correct, please try again...\n");
+            }
+        }
+        //if union == 'q'
+        //quit game    
+        else
+        {
+            printf("Quitting current game...\n\n");
+        }
+    }
+}
 //changeMaxNum - user changes max number the game uses
+
+//exitProgram - user ends program
