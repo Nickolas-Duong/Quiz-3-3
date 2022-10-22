@@ -18,13 +18,17 @@ void playGame(void)
     while(tolower((int)*choice) != 'q')
     {
         //union = get choice    
-        while(tolower((int)*choice) != 'q' && isdigit((int)*choice) != 1)
+        while(tolower((int)*choice) != 'q' || isdigit((int)*choice) != 1)
         {
             printf("Guess a random number between 1 and %d (press q to quit): ", max);
             scanf("%s", choice);
             if(tolower((int)*choice) != 'q' && isdigit((int)*choice) != 1)
             {
                 printf("Invalid input, please try again\n\n");
+            }
+            else
+            {
+                break;
             }
         }
 
@@ -48,6 +52,7 @@ void playGame(void)
             else if(temp == randomNum)
             {
                 printf("You guessed the correct number! \n");
+                break;
                 
             }
             //if choice is not accepted
