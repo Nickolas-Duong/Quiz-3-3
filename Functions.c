@@ -95,3 +95,7 @@ void changeMaxNum(void)
 }
 
 //exitProgram - user ends program
+void exitProgram(void)
+{
+    printf("Quitting program...\n\n");
+}
