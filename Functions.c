@@ -90,5 +90,8 @@ void changeMaxNum(void)
         }
         *temp = "";
     }
+
+    max = atoi(temp);
 }
+
 //exitProgram - user ends program
