@@ -73,10 +73,11 @@ void playGame(void)
 void changeMaxNum(void)
 {
     char temp[MAXLEN+1] = "";
-    while(isdigit((int)*temp) != 1)
+    while(isdigit((int)*temp) != 1 || atoi(temp) < 1 || atoi(temp) > 100)
     {
         printf("Enter a new Max Number between 1 and 100: ");
         scanf("%s", temp);
+        
         if (isdigit((int)*temp) != 1)
         {
             printf("Not a number, please try again...\n");
