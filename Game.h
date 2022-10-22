@@ -5,6 +5,10 @@
 //Libraries
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+//max number
+static int max = 10;
 
 //function prototypes
 extern void playGame(int);
