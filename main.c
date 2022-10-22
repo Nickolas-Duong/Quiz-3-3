@@ -1,32 +1,18 @@
 //main function - function that runs the game
+#include "Game.h"
 
-//void main
-    //local variable to get choice
-    //local variable for MAXNUM
-    //while loop
-        //if choice is correct,
-            //break loop
-        //else try again
+//const array of strings with function names
+const char* const menuItems[] = {"Start Number Guessing Game", "Change Max Number Value", "Quit Game"};
 
-    //switch based on choice
-        //case 1
-            //play game
-            //get maxNum for game
-            //branch - read maxNum from file
-            //game function
-            //if 0
-                //break
-            //else
-                //win
+//array of pointers for functions
+void (*menuFuncPtrs[])(void) = {playGame, changeMax, exitProgram};
 
-            //break
-        //case 2
-            //change max num
-                //get choice
-                //replace max num
-                //in branch, overwrite txt file with choice
-                //close file
-            //break
-        //case 3 or default
-            //end program
-//EXIT_SUCCESS
+//int main
+int main()
+{
+    void showUserMenuProcess(int, const char* const[], void(*[])(void));
+    const int choices = sizeof(menuFuncPtrs)/sizeof(menuFuncPtrs[0]);
+    showUserMenuProcess(choices, menuItems, menuFuncPtrs);
+    
+    return EXIT_SUCCESS;
+}
